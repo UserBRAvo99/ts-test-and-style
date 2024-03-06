@@ -16,6 +16,9 @@ const slice = createSlice({
     name: 'posts',
     initialState,
     reducers: {},
+    selectors: {
+        selectPost: (state) => state.items
+    }
 })
 
 export const postsReducer = slice.reducer
