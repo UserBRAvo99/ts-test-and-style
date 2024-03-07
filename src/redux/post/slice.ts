@@ -11,14 +11,16 @@ interface IPostSlice {
 const initialState: IPostSlice = {
     items: []
 }
-
+//  створюємо стандартний слайс з reducers та selectors
 const slice = createSlice({
     name: 'posts',
     initialState,
     reducers: {},
     selectors: {
-        selectPost: (state) => state.items
+        selectPosts: (state) => state.items
     }
 })
-
+// експортуємо редюсери
 export const postsReducer = slice.reducer
+// експортуємо селектори
+export const {selectPosts} = slice.selectors
