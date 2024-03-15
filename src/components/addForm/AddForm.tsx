@@ -1,4 +1,5 @@
 // використовуємо пакет реакт хук форм (бібліотека)
+// так виглядає типізація react-hook-form (треба запам'ятати), якщо в нас додаються поля в формі, треба не забути доповнити інтерфейс, щоб не було помилок
 import { SubmitHandler, useForm } from "react-hook-form";
 
 interface IInputsForm {
@@ -8,9 +9,9 @@ interface IInputsForm {
 }
 
 const AddForm = () => {
-  //  за допомогою useForm() ми будемо збирати данні з форми
+  //  за допомогою useForm() ми будемо збирати данні з форми, також треба типізувати useForm()
   //  register, handleSubmit - отримання данних
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm<IInputsForm>();
 
   // ініціалізуємо функцію submit яка буде виводити данні з handleSubmit
   // обов'язково треба типізувати данні, напишемо інтерфейс, можливо перенесемо його до файлу types.ts
