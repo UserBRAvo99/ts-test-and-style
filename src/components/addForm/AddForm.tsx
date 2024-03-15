@@ -1,6 +1,9 @@
 // використовуємо пакет реакт хук форм (бібліотека)
 // так виглядає типізація react-hook-form (треба запам'ятати), якщо в нас додаються поля в формі, треба не забути доповнити інтерфейс, щоб не було помилок
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useAppDispatch } from "../../redux/hook";
+import { addPost } from "../../redux/post/slice";
+import { nanoid } from "@reduxjs/toolkit";
 
 interface IInputsForm {
   title: string;
@@ -13,6 +16,11 @@ const AddForm = () => {
   //  register, handleSubmit - отримання данних
   const { register, handleSubmit } = useForm<IInputsForm>();
 
+  // додаємо діспатч (відправка данних до редаксу)
+  // спочатку оголошуємо змінну діспатч з урахуванням що в тайпскрипті ми використовуємо useAppDispatch()
+  // така ініціалізація - хороша праутика , можна і простіше, але не треба(!!!)
+  const dispatch = useAppDispatch();
+
   // ініціалізуємо функцію submit яка буде виводити данні з handleSubmit
   // обов'язково треба типізувати данні, напишемо інтерфейс, можливо перенесемо його до файлу types.ts
 
@@ -20,7 +28,12 @@ const AddForm = () => {
 
   const submit: SubmitHandler<IInputsForm> = (data) => {
     // в консолі ми отримаємо об'єкт з данними які будуть введені в форму. під капотом бібліотека робить контрольовану форму, а так ми отримуємо данні з якими можна далі працювати
-    console.log(data);
+    // console.log(data);
+
+    // увожно підготовлюємо данні які відправляємо , треба додати всі портбні поля для проходження типізації - IPost
+    // змінна post - буде доповнювати форму потрібнити данними перед відправкою в редакс
+    const post = { ...data, id: nanoid(), createdAt: "21.10.2024" };
+    dispatch(addPost(post));
   };
   return (
     <div>
