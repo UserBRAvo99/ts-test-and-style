@@ -20,6 +20,7 @@ const slice = createSlice({
     addPost: (state, action: PayloadAction<IPost>) => {
       state.items.push(action.payload);
     },
+    // обов'язково типізуєми actions - PayloadAction<в цих дужках треба вказати тип данних які мають бути типізованими>
     deletePost: (state, actions: PayloadAction<string>) => {
       state.items = state.items.filter((post) => post.id !== actions.payload);
     },

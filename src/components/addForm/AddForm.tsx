@@ -4,6 +4,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useAppDispatch } from "../../redux/hook";
 import { addPost } from "../../redux/post/slice";
 import { nanoid } from "@reduxjs/toolkit";
+// moment бібліотека для роботи з часом, можна вказувати різні формати для додавання дати в постах, тудушках чи в інших варіантах (формат можна корегувати - детальніше в документації)
+import moment from "moment";
 
 interface IInputsForm {
   title: string;
@@ -32,7 +34,11 @@ const AddForm = () => {
 
     // увожно підготовлюємо данні які відправляємо , треба додати всі портбні поля для проходження типізації - IPost
     // змінна post - буде доповнювати форму потрібнити данними перед відправкою в редакс
-    const post = { ...data, id: nanoid(), createdAt: "21.10.2024" };
+    const post = {
+      ...data,
+      id: nanoid(),
+      createdAt: moment().format("DD.MM.YY hh:mm:ss"),
+    };
     dispatch(addPost(post));
   };
   return (
