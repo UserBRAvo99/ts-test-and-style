@@ -20,6 +20,9 @@ const slice = createSlice({
     addPost: (state, action: PayloadAction<IPost>) => {
       state.items.push(action.payload);
     },
+    deletePost: (state, actions: PayloadAction<string>) => {
+      state.items = state.items.filter((post) => post.id !== actions.payload);
+    },
   },
   selectors: {
     selectPosts: (state) => state.items,
@@ -30,4 +33,4 @@ export const postsReducer = slice.reducer;
 // експортуємо селектори
 export const { selectPosts } = slice.selectors;
 // експортуємо action (дії)
-export const { addPost } = slice.actions;
+export const { addPost, deletePost } = slice.actions;
