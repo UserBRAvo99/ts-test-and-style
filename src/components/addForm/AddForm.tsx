@@ -37,7 +37,7 @@ const AddForm = () => {
     const post = {
       ...data,
       id: nanoid(),
-      createdAt: moment().format("DD.MM.YY hh:mm:ss"),
+      createdAt: moment().format("DD.MM.YY"),
     };
     dispatch(addPost(post));
   };
