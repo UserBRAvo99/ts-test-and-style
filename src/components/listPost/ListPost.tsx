@@ -15,7 +15,7 @@ const ListPost = () => {
         {posts.map((post) => (
           <li
             key={nanoid()}
-            className="flex flex-col w-60  mx-auto border border-indigo-500 rounded-md p-2"
+            className="flex flex-col w-60  mx-auto border border-indigo-500 rounded-md p-2 mb-3"
           >
             <div className="flex flex-col pb-3">
               <h3 className="pb-1">{post.title}</h3>

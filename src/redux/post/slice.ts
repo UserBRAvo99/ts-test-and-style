@@ -4,11 +4,13 @@ import { IPost } from "../../types/types";
 // тиізуємо стейт за допомогою інтерфейсу
 interface IPostSlice {
   items: IPost[];
+  modal: boolean;
 }
 
 // створюємо initialState та типізуємо його
 const initialState: IPostSlice = {
   items: [],
+  modal: false,
 };
 //  створюємо стандартний слайс з reducers та selectors
 const slice = createSlice({
@@ -27,6 +29,7 @@ const slice = createSlice({
   },
   selectors: {
     selectPosts: (state) => state.items,
+    selectModal: (state) => state.modal,
   },
 });
 // експортуємо редюсери
