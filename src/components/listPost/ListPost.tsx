@@ -11,15 +11,28 @@ const ListPost = () => {
   // відмальовуємо пости за допомогою методу масивів
   return (
     <div>
-      <ul>
+      <ul className="p-2">
         {posts.map((post) => (
-          <li key={nanoid()}>
-            <h3>{post.title}</h3>
-            <p>{post.body}</p>
-            <button onClick={() => dispatch(deletePost(post.id))}>
-              Delete
-            </button>
-            <ul>
+          <li
+            key={nanoid()}
+            className="flex flex-col w-60  mx-auto border border-indigo-500 rounded-md p-2"
+          >
+            <div className="flex flex-col pb-3">
+              <h3 className="pb-1">{post.title}</h3>
+              <p className="pb-1">{post.body}</p>
+            </div>
+            <div className="flex w-full justify-between pb-3">
+              <button className="p-1 bg-white rounded-md border-2 border-green-500">
+                Change
+              </button>
+              <button
+                onClick={() => dispatch(deletePost(post.id))}
+                className="p-1 bg-white rounded-md border-2 border-red-500"
+              >
+                Delete
+              </button>
+            </div>
+            <ul className="flex p-1 justify-between">
               <li>{post.author}</li>
               <li>{post.createdAt}</li>
             </ul>

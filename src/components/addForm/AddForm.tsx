@@ -42,14 +42,37 @@ const AddForm = () => {
     dispatch(addPost(post));
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit(submit)}>
+    <div className="mx-auto bg-emerald-500 p-5 rounded-md">
+      <form
+        onSubmit={handleSubmit(submit)}
+        className="flex w-56 h-auto flex-col gap-2"
+      >
         {/* розпилюємо обєкт зі створенням потрібних полів */}
-        <input {...register("title")} type="text" />
-        <textarea {...register("body")} />
-        <input {...register("author")} type="text" />
-        <button>Add post</button>
-        <button type="reset">Reset</button>
+        <div className="flex flex-col gap-2 ">
+          <input
+            {...register("title")}
+            type="text"
+            placeholder="Title"
+            className="border border-indigo-500 rounded-md p-1"
+          />
+          <textarea
+            {...register("body")}
+            placeholder="Text"
+            className="border border-indigo-500 rounded-md p-1"
+          />
+          <input
+            {...register("author")}
+            type="text"
+            placeholder="Author"
+            className="border border-indigo-500 rounded-md p-1"
+          />
+        </div>
+        <div className="flex w-full justify-between">
+          <button className="p-1 bg-white rounded-md">Add post</button>
+          <button type="reset" className="p-1 bg-white rounded-md">
+            Reset
+          </button>
+        </div>
       </form>
     </div>
   );
