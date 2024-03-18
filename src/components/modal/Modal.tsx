@@ -1,6 +1,10 @@
 import { IoClose } from "react-icons/io5";
 
-const Modal = ({ children }) => {
+interface IChildForModal {
+  children: JSX.Element;
+}
+
+const Modal = ({ children }: IChildForModal) => {
   return (
     <>
       <div className="flex w-screen h-screen opacity-50 bg-slate-500 absolute left-0 top-0 "></div>
