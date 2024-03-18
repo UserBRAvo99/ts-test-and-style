@@ -1,6 +1,7 @@
 import "./App.css";
 import AddForm from "./components/addForm/AddForm";
 import ListPost from "./components/listPost/ListPost";
+import Modal from "./components/modal/Modal";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
         <AddForm />
         <ListPost />
       </div>
+      <Modal />
     </>
   );
 }
