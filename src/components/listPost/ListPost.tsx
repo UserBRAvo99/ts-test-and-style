@@ -1,8 +1,15 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { deletePost, selectPosts } from "../../redux/post/slice";
+import { FaEdit } from "react-icons/fa";
+import { MdDeleteOutline } from "react-icons/md";
+import { IPost } from "../../types/types";
 
-const ListPost = () => {
+interface IChange {
+  handleChangePost: (post: IPost) => void;
+}
+
+const ListPost = ({ handleChangePost }: IChange) => {
   // отримуємо пости за допомогою селекторів useAppSelector
   const posts = useAppSelector(selectPosts);
   // оголошуємо діспатч та використовуємо калбєк функцію для кнопки, для видалення посту
@@ -23,13 +30,13 @@ const ListPost = () => {
             </div>
             <div className="flex w-full justify-between pb-3">
               <button className="p-1 bg-white rounded-md border-2 border-green-500">
-                Change
+                <FaEdit />
               </button>
               <button
                 onClick={() => dispatch(deletePost(post.id))}
                 className="p-1 bg-white rounded-md border-2 border-red-500"
               >
-                Delete
+                <MdDeleteOutline />
               </button>
             </div>
             <ul className="flex p-1 justify-between">
