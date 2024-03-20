@@ -4,31 +4,34 @@ import AddForm from "./components/addForm/AddForm";
 import ChangePost from "./components/changePost/ChangePost";
 import ListPost from "./components/listPost/ListPost";
 import Modal from "./components/modal/Modal";
-import { useAppSelector } from "./redux/hook";
-import { selectModal } from "./redux/post/slice";
 import { IPost } from "./types/types";
 
-interface IAppTypes {
-  isOpen: boolean;
-  handleChangePost: (post: IPost) => void;
-}
+// interface IAppTypes {
+//   modalIsOpen: boolean;
+//   handleChangePost: (item: IPost) => void;
+// }
 
 function App() {
-  const [post, setPost] = useState<IPost | undefined>();
-  const { isOpen } = useAppSelector<boolean>(selectModal);
+  const [post, setPost] = useState<IPost>();
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  // const dispatch = useAppDispatch<boolean>(modalToggle);
 
   const handleChangePost = (item: IPost) => {
     setPost(item);
+    // dispatch(!modalIsOpen);
+  };
+  const handleModal = () => {
+    setIsOpenModal(!isOpenModal);
   };
   return (
     <div className="relative">
       <div className="flex flex-col w-200 px-20 py-10">
         <AddForm />
-        <ListPost handleChangePost={handleChangePost} />
+        <ListPost isOpen={handleModal} handleChangePost={handleChangePost} />
       </div>
-      {isOpen && (
-        <Modal>
-          <ChangePost post={post} />
+      {isOpenModal && (
+        <Modal isOpen={handleModal}>
+          <ChangePost isOpen={handleModal} changePost={post} />
         </Modal>
       )}
     </div>

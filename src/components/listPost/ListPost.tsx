@@ -7,13 +7,19 @@ import { IPost } from "../../types/types";
 
 interface IChange {
   handleChangePost: (post: IPost) => void;
+  isOpen: () => void;
 }
 
-const ListPost = ({ handleChangePost }: IChange) => {
+const ListPost = ({ isOpen, handleChangePost }: IChange) => {
   // отримуємо пости за допомогою селекторів useAppSelector
   const posts = useAppSelector(selectPosts);
   // оголошуємо діспатч та використовуємо калбєк функцію для кнопки, для видалення посту
   const dispatch = useAppDispatch();
+
+  const handleClickEdit = (post: IPost) => {
+    isOpen();
+    handleChangePost(post);
+  };
 
   // відмальовуємо пости за допомогою методу масивів
   return (
@@ -29,7 +35,10 @@ const ListPost = ({ handleChangePost }: IChange) => {
               <p className="pb-1">{post.body}</p>
             </div>
             <div className="flex w-full justify-between pb-3">
-              <button className="p-1 bg-white rounded-md border-2 border-green-500">
+              <button
+                onClick={() => handleClickEdit(post)}
+                className="p-1 bg-white rounded-md border-2 border-green-500"
+              >
                 <FaEdit />
               </button>
               <button
