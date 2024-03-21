@@ -4,7 +4,6 @@ import { deletePost, selectPosts } from "../../redux/post/slice";
 import { FaEdit, FaUserCircle } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { IPost } from "../../types/types";
-// import { IoIosMore } from "react-icons/io";
 
 interface IChange {
   handleChangePost: (post: IPost) => void;
@@ -21,9 +20,6 @@ const ListPost = ({ isOpen, handleChangePost }: IChange) => {
     isOpen();
     handleChangePost(post);
   };
-  // const handleClickMore = (post: IPost) => {
-  //   isOpen()
-  // }
 
   // відмальовуємо пости за допомогою методу масивів
   return (
@@ -64,9 +60,6 @@ const ListPost = ({ isOpen, handleChangePost }: IChange) => {
                 >
                   <FaEdit />
                 </button>
-                {/* <button onClick={isOpen} aboutPost={post}>
-                  <IoIosMore />
-                </button> */}
                 <button
                   onClick={() => dispatch(deletePost(post.id))}
                   className="p-1 bg-white rounded-md border-2 border-red-500"

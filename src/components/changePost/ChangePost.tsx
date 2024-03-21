@@ -10,21 +10,12 @@ interface IChangePost {
   changePost: IPost;
 }
 
-interface IInputsForm {
-  title: string;
-  body: string;
-  author: string;
-  id: string;
-  createdAt: string;
-  edit: boolean;
-}
-
 const ChangePost = ({ isOpen, changePost }: IChangePost) => {
-  const { register, handleSubmit } = useForm<IInputsForm>();
+  const { register, handleSubmit } = useForm<IPost>();
 
   const dispatch = useAppDispatch();
 
-  const submit: SubmitHandler<IInputsForm> = (data) => {
+  const submit: SubmitHandler<IPost> = (data) => {
     const newPost = {
       ...data,
       author: changePost.author,
@@ -65,5 +56,3 @@ const ChangePost = ({ isOpen, changePost }: IChangePost) => {
 };
 
 export default ChangePost;
-
-// { post }: IPost

@@ -6,19 +6,12 @@ import ListPost from "./components/listPost/ListPost";
 import Modal from "./components/modal/Modal";
 import { IPost } from "./types/types";
 
-// interface IAppTypes {
-//   modalIsOpen: boolean;
-//   handleChangePost: (item: IPost) => void;
-// }
-
 function App() {
   const [post, setPost] = useState<IPost>();
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
-  // const dispatch = useAppDispatch<boolean>(modalToggle);
 
   const handleChangePost = (item: IPost) => {
     setPost(item);
-    // dispatch(!modalIsOpen);
   };
   const handleModal = () => {
     setIsOpenModal(!isOpenModal);
