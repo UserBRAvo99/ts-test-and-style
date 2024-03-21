@@ -16,6 +16,7 @@ interface IInputsForm {
   author: string;
   id: string;
   createdAt: string;
+  edit: boolean;
 }
 
 const ChangePost = ({ isOpen, changePost }: IChangePost) => {

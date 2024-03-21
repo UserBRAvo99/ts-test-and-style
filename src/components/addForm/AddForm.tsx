@@ -43,7 +43,7 @@ const AddForm = () => {
     dispatch(addPost(post));
   };
   return (
-    <div className="mx-auto bg-emerald-500 p-5 rounded-md">
+    <div className="mx-auto bg-emerald-500 p-5 rounded-md shadow-md">
       <form
         onSubmit={handleSubmit(submit)}
         className="flex w-56 h-auto flex-col gap-2"
