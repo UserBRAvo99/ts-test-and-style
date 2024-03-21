@@ -38,6 +38,7 @@ const AddForm = () => {
       ...data,
       id: nanoid(),
       createdAt: moment().format("DD.MM.YY"),
+      edit: false,
     };
     dispatch(addPost(post));
   };
@@ -50,17 +51,20 @@ const AddForm = () => {
         {/* розпилюємо обєкт зі створенням потрібних полів */}
         <div className="flex flex-col gap-2 ">
           <input
+            required
             {...register("title")}
             type="text"
             placeholder="Title"
             className="border border-indigo-500 rounded-md p-1"
           />
           <textarea
+            required
             {...register("body")}
             placeholder="Text"
-            className="border border-indigo-500 rounded-md p-1"
+            className="border border-indigo-500 rounded-md p-1 resize-none"
           />
           <input
+            required
             {...register("author")}
             type="text"
             placeholder="Author"

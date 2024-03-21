@@ -35,7 +35,7 @@ export const store = configureStore({
     }),
 });
 
-export let persistor = persistStore(store);
+export const persistor = persistStore(store);
 
 // redux toolkit - забераємо з документації , для показу данних в редаксі(для покращення комунікації)
 
