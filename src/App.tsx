@@ -22,7 +22,7 @@ function App() {
         <AddForm />
         <ListPost isOpen={handleModal} handleChangePost={handleChangePost} />
       </div>
-      {isOpenModal && (
+      {isOpenModal && post && (
         <Modal isOpen={handleModal}>
           <ChangePost isOpen={handleModal} changePost={post} />
         </Modal>
